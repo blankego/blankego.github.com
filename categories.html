@@ -1,0 +1,30 @@
+---
+layout: main
+title: Categories
+---
+<script type="text/javascript">
+	var catetories = {
+		{% for cat in site.categories %}
+			"{{cat[0]}}":[
+				{% for page in cat[1]%}
+					["{{page.title}}","{{page.url}}","{{page.date}}"],
+				{% endfor %}
+			],
+		{% endfor %}
+	};
+</script>
+<script type="text/javascript">
+	function sort(cat,by){
+
+	}
+	document.addEventListener("DOMContentLoaded",function(){
+		var cat = null;
+
+
+		setInterval(function(){
+			var hash = document.location.hash;
+			hash = hash? hash.substr(1): hash;
+			if(hash!=cat)
+		},100);
+	});
+</script>

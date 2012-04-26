@@ -1,0 +1,18 @@
+<div class="header">
+	<span id="siteName">
+	B<u>lankego's</u> H<u>umble</u> H<u>ome</u>
+	</span>
+	<ul class="menu main">
+		{% for menu in site.main_menu %}
+		{% if menu.url == page.url or (menu.label == "Blog" and page.categories[0] == "blog") %}
+				<li class="menu_item selected">
+					{{menu.label}}
+				</li>
+		{% else %}
+				<li class="menu_item">
+					<a href="{{menu.url}}">{{menu.label}}</a>
+				</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</div>

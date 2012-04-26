@@ -1,0 +1,34 @@
+<div class="sidebar">
+	<div>
+		<h4>Categories</h4>
+		<ul>
+			{% for category in site.categories %}
+			<li>
+				<a href="/categories.html#{{ category[0] }}">
+				{{ category[0] | join: "/" }}
+				</a>
+				<sup>[{{ category[1].size }}]</sup>
+			</li>
+			{% endfor %}
+		</ul>
+		<hr/>
+		<h4>Tags</h4>
+		<ul>
+			{% for tag in tags_list %}
+			<li>
+				<a href="/tags.html#{{ tag[0] }}">{{ tag[0] }}</a>
+				<sup>[{{ tag[1].size }}]</sup>
+
+			</li>
+			{% endfor %}
+		</ul>
+		<hr/>
+		<h4>Archive</h4>
+		<ul>
+			<li><a href="/archive.html#2012">2012</a></li>
+			<li><a href="/archive.html#2012">2011</a></li>
+			<li><a href="/archive.html#2012">2010</a></li>
+
+		</ul>
+	</div>
+</div>

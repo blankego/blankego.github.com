@@ -1,0 +1,13 @@
+#markdown: rdiscount
+auto: true
+pygments: true
+#paginate: 10
+#markdown_ext: markdown,mkd,mkdn,md
+title: 述而
+main_menu:
+- label: Home
+  url: /index.html
+- label: About
+  url: /about.html
+- label: Blog
+  url: /blog.html
