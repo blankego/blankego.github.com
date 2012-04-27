@@ -2,7 +2,28 @@ body{
     margin: 0;
     padding: 0px 10px 0px 10px;
 }
+a {
+    text-decoration: none;
+    color: navy;
+}
+a:visited{
+    color: navy;
+}
 
+h1,h2,h3,h4{
+    min-width:10%;
+    max-height: 100%;
+    overflow: auto;
+    /*border: 1px solid #7f804b;*/
+    background: #fff6e6;
+    border-radius: 0px 15 0 15px;
+    margin: 6px;
+    padding: 6px 6px 6px 8px;
+}
+h5,h6{
+    margin:6px;
+    padding: 6px 6px 6px 10px;
+}
 #siteName{
     color: #fafad2;
     font-weight: bold;
@@ -20,8 +41,25 @@ body{
     border: solid 1px #add8e6;
     padding: 3px 6px;
     margin: 6px 0 20px 6px;
+    min-width: 100px;
     /*height: 95%;*/
 
+}
+.sidebar a{
+    display: table-cell;
+    padding-right: 10px;
+    text-decoration: none;
+}
+.sidebar sup{
+    display: table-cell;
+    text-align: right;
+
+}
+.sidebar li{
+    display: table-row;
+    width: 100%;
+    white-space: nowrap;
+    clear: both;
 }
 .sidebar h4{
     margin: 0;
@@ -32,6 +70,8 @@ body{
     border-radius: 10px 0 0 10px;
 }
 .sidebar ul{
+    width: 100%;
+    display: table;
     list-style: none;
     padding: 3px;
     margin: 0;
@@ -71,11 +111,12 @@ body{
 
 }
 li.menu_item{
-   display: inline;
+    display: inline;
     list-style-type: none;
-    float: left;
+
 
 }
+
 .menu_item a {
     margin: 0 0 0 5px;
     color: #f1f1f1;
@@ -93,5 +134,65 @@ li.menu_item{
 }
 
 .content{
-    padding: 8px;
+    padding: 12px;
+
+}
+.container{
+    background: #fefff3;
+}
+code{
+    color: #14698b;
+    padding: 5px;
+}
+blockquote{
+    border: 1px dotted green;
+    padding: 6px;
+    margin: 6px;
+    background: #f9f9eb;
+}
+pre{
+    border: 1px solid #661e80;
+    padding: 6px;
+    margin: 6px;
+    background: #edfff5;
+}
+pre.excerpt{
+    border: 0;
+    background: #fefff3;
+}
+
+pre>code{
+    padding: 0;
+    color: #564005;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid #a9a9a9;
+}
+td,th{
+    border-collapse: collapse;
+    border: 1px solid     #a9a9a9;
+    padding: 2px 4px 2px 4px;
+    text-align: left;
+}
+.tags{
+    padding: 0 0 2px 0px;
+    color: #647779;
+    font-size: x-small;
+}
+.tag{
+
+
+    border: 1px solid #dcdc00;
+    background: yellow;
+    padding: 2px 4px ;
+    border-radius:  6px 0 6px 0;
+    margin: 2px 3px 2px 2px;
+
+}
+.tag a{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
 }

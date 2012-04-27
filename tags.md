@@ -1,0 +1,15 @@
+---
+layout: main
+title: Tags
+---
+
+<div id="tags">
+	{% for tag in site.tags %}	
+	<h2><a id="{{tag[0]}}" >{{tag[0]}}</a></h2>
+	<table class="sublist">
+		{% for f in tag[1] %}
+		<tr><td><a href="{{f.url}}">{{ f.title }}</a></td><td>{{ f.date |date: "%Y/%m/%d"}}</td></tr>
+		{% endfor %}
+	</table>	
+	{% endfor %}
+</div>

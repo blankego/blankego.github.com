@@ -5,7 +5,11 @@
 			{% for category in site.categories %}
 			<li>
 				<a href="/categories.html#{{ category[0] }}">
-				{{ category[0] | join: "/" }}
+				{% if page.categories contains category[0] %}
+				<b>{{ category[0] }}</b>
+				{% else %}
+					{{ category[0] }}
+				{% endif %}
 				</a>
 				<sup>[{{ category[1].size }}]</sup>
 			</li>
@@ -14,9 +18,15 @@
 		<hr/>
 		<h4>Tags</h4>
 		<ul>
-			{% for tag in tags_list %}
+			{% for tag in site.tags %}
 			<li>
-				<a href="/tags.html#{{ tag[0] }}">{{ tag[0] }}</a>
+				<a href="/tags.html#{{ tag[0] }}">
+				{% if page.tags contains tag[0] %}
+					<b>{{tag[0]}}</b>
+				{% else %}
+					{{ tag[0] }}
+				{% endif %}
+				</a>
 				<sup>[{{ tag[1].size }}]</sup>
 
 			</li>
@@ -26,8 +36,9 @@
 		<h4>Archive</h4>
 		<ul>
 			<li><a href="/archive.html#2012">2012</a></li>
-			<li><a href="/archive.html#2012">2011</a></li>
-			<li><a href="/archive.html#2012">2010</a></li>
+			<li><a href="/archive.html#2011">2011</a></li>
+			<li><a href="/archive.html#2010">2010</a></li>
+			<li><a href="/archive.html#2009">2009</a></li>
 
 		</ul>
 	</div>

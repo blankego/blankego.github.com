@@ -1,4 +1,4 @@
-#markdown: rdiscount
+markdown: rdiscount
 auto: true
 pygments: true
 #paginate: 10
@@ -11,3 +11,7 @@ main_menu:
   url: /about.html
 - label: Blog
   url: /blog.html
+- label: Projects
+  url: /projects.html
+- label: Resources
+  url: /resources.html

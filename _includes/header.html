@@ -4,7 +4,7 @@
 	</span>
 	<ul class="menu main">
 		{% for menu in site.main_menu %}
-		{% if menu.url == page.url or (menu.label == "Blog" and page.categories[0] == "blog") %}
+		{% if menu.url == page.url  %}
 				<li class="menu_item selected">
 					{{menu.label}}
 				</li>
