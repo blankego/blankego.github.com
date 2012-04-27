@@ -1,6 +1,8 @@
 ---
 layout: post
-categories: [blog,漢語]
+categories: 
+- blog
+- 漢語
 tags: essay
 title: Swine flu 和 豬流感
 ---
