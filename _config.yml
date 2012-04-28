@@ -15,3 +15,5 @@ main_menu:
   url: /projects.html
 - label: Resources
   url: /resources.html
+- label: JS Tools
+  url: /js-tools.html

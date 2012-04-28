@@ -1,0 +1,21 @@
+td a,th a{
+	text-decoration:none;
+}
+a{
+	color:darkblue;
+	text-decoration:none
+}
+a:visited{color:darkblue}
+
+.hilight{
+	background-color:yellow;
+}
+table.struct,.struct table {
+	border-collapse:collapse;
+	
+}
+.struct td, .struct th{
+	border:1px dotted lightgrey
+	}
+del{color:red}
+ins{color:green}

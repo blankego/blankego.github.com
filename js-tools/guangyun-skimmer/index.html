@@ -1,0 +1,672 @@
+<html>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+	<title>廣韻檢索_js_v0.1</title>
+<link rel="stylesheet" type="text/css" href="css/jqueryslidemenu.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
+<!--[if lte IE 7]>
+<style type="text/css">
+html .jqueryslidemenu{height: 1%;} /*Holly Hack for IE7 and below*/
+</style>
+<![endif]-->
+
+
+
+
+
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.history.js"></script>
+
+<script type="text/javascript" src="data/sjeng.js"></script>
+<script type="text/javascript" src="data/hiunn.js"></script>
+<script type="text/javascript" src="data/hiunnmiuk.js"></script>
+<script type="text/javascript" src="data/dziohym.js"></script>
+<script type="text/javascript" src="data/kuankhiunn.js"></script>
+<script type="text/javascript" src="js/khdict.js"></script>
+<script type="text/javascript" src="js/khtable.js"></script>
+<script type="text/javascript" src="js/actions.js"></script>
+
+<script type="text/javascript" src="js/jqueryslidemenu.js"></script>
+</head>
+<body>
+<div id="menu" class="jqueryslidemenu">
+<ul>
+<li><a href="cethiunn_szivv.html">切韻序</a></li>
+<li><a href="javascript:cmd('showId','miuktable')">韻目</a></li>
+<li><a href="javascript:cmd('showId','sjengtable')">聲母表</a></li>
+<li><a href="javascript:cmd('showId','hiunntable')">韻母表</a></li>
+<li><a href="javascript:void(0)">字音表</a>
+	<ul>
+		<li><a href="javascript:cmd('table','通')">通攝</a></li>
+		<li><a href="javascript:cmd('table','江')">江攝</a></li>
+		<li><a href="javascript:cmd('table','止')">止攝</a></li>
+		<li><a href="javascript:cmd('table','遇')">遇攝</a></li>
+		<li><a href="javascript:cmd('table','蟹')">蟹攝</a></li>
+		<li><a href="javascript:cmd('table','臻')">臻攝</a></li>
+		<li><a href="javascript:cmd('table','山')">山攝</a></li>
+		<li><a href="javascript:cmd('table','效')">效攝</a></li>
+		<li><a href="javascript:cmd('table','果')">果攝</a></li>
+		<li><a href="javascript:cmd('table','假')">假攝</a></li>
+		<li><a href="javascript:cmd('table','宕')">宕攝</a></li>
+		<li><a href="javascript:cmd('table','梗')">梗攝</a></li>
+		<li><a href="javascript:cmd('table','曾')">曾攝</a></li>
+		<li><a href="javascript:cmd('table','流')">流攝</a></li>
+		<li><a href="javascript:cmd('table','深')">深攝</a></li>
+		<li><a href="javascript:cmd('table','咸')">咸攝</a></li>
+	</ul>
+</li>
+<li><a href="javascript:cmd('clearHilight')">清除高亮</a></li>
+<li><a href="help.html">〔幫助〕</a></li>
+</ul>
+<br style="clear: left" />
+</div>
+<br/>
+<table>
+<tr>
+	<td>
+		<select id="seektype">
+		<option value='char' selected='selected'>查字</option>
+		<option value='rom'>以羅馬字查小韻</option>
+		<option value='cet'>以反切查小韻</option>
+		<option value='hiunn'>查韻</option>
+		<option value='code'>以等韻代碼查小韻</option>
+		</select>
+		<input type="text" id="hwinput" />
+		<input type="submit" id="submit" value="Search"/>
+	</td>
+	<td id="switches">
+
+	</td>
+</tr>
+</div>
+<br/>
+<div id="structview" style="display:none">
+<table class="struct" id="sjengtable" style="display:none">
+<tbody>
+			<TR><th>五音</TH><th>清濁</th><TH>聲紐</TH><TH>鄭張尚芳</TH><TH>潘悟雲</TH><TH>王力</TH><TH>邵榮芬</TH><TH>李榮</TH><TH>代碼</TH></TR>
+			<TR>
+				<th rowspan="4">脣</th>
+				<th>全清</th>
+				<TD>幫</TD>
+<TD>p</TD>
+<TD>p</TD>
+<TD>p</TD>
+<TD>p</TD>
+<TD>p</TD>
+<TD>11</TD>
+</TR>
+<tr><th>次青</th><td>滂</TD>
+<TD>ph</TD>
+<TD>ph</TD>
+<TD>p‘</TD>
+<TD>p‘</TD>
+<TD>p‘</TD>
+<TD>12</TD>
+</TR>
+<tr><th>全濁</th><td>並</TD>
+<TD>b</TD>
+<TD>b</TD>
+<TD>b</TD>
+<TD>b</TD>
+<TD>b</TD>
+<TD>13</TD>
+</TR>
+<tr><th>次濁</th><td>明</TD>
+<TD>m</TD>
+<TD>m</TD>
+<TD>m</TD>
+<TD>m</TD>
+<TD>m</TD>
+<TD>14</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR>
+	<th rowspan="4">舌頭</th>
+	<th>全清</th>
+	<TD>端</TD>
+<TD>t</TD>
+<TD>t</TD>
+<TD>t</TD>
+<TD>t</TD>
+<TD>t</TD>
+<TD>21</TD>
+</TR>
+<tr><th>次清</th><td>透</TD>
+<TD>th</TD>
+<TD>th</TD>
+<TD>t‘</TD>
+<TD>t‘</TD>
+<TD>t‘</TD>
+<TD>22</TD>
+</TR>
+<tr><th>全濁</th><td>定</TD>
+<TD>d</TD>
+<TD>d</TD>
+<TD>d</TD>
+<TD>d</TD>
+<TD>d</TD>
+<TD>23</TD>
+</TR>
+<tr><th>次濁</th><td>泥</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>24</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th>半舌</th><th>次濁</th><TD>來</TD>
+<TD>l</TD>
+<TD>l</TD>
+<TD>l</TD>
+<TD>l</TD>
+<TD>l</TD>
+<TD>25</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="4">舌上</th>
+	<th>全清</th>
+	<TD>知</TD>
+<TD>ʈ</TD>
+<TD>ʈ</TD>
+<TD> ȶ</TD>
+<TD> ȶ</TD>
+<TD> ȶ</TD>
+<TD>31</TD>
+</TR>
+<tr><th>次清</th><td>徹</TD>
+<TD>ʈh</TD>
+<TD>ʈh</TD>
+<TD> ȶ‘</TD>
+<TD> ȶ‘</TD>
+<TD> ȶ‘</TD>
+<TD>32</TD>
+</TR>
+<tr><th>全濁</th><td>澄</TD>
+<TD>ɖ</TD>
+<TD>ɖ</TD>
+<TD>ȡ</TD>
+<TD>ȡ</TD>
+<TD>ȡ</TD>
+<TD>33</TD>
+</TR>
+<tr><th>次濁</th><td>娘</TD>
+<TD>ɳ</TD>
+<TD>ɳ</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>n</TD>
+<TD>34</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="5">齒頭</th>
+	<th>全清</th>
+	<TD>精</TD>
+<TD>ts</TD>
+<TD>ʦ</TD>
+<TD>ts</TD>
+<TD>ts</TD>
+<TD>ts</TD>
+<TD>41</TD>
+</TR>
+<tr><th>次清</th><td>清</TD>
+<TD>tsh</TD>
+<TD>ʦh</TD>
+<TD>ts‘</TD>
+<TD>ts‘</TD>
+<TD>ts‘</TD>
+<TD>42</TD>
+</TR>
+<tr><th>全濁</th><td>從</TD>
+<TD>dz</TD>
+<TD>ʣ</TD>
+<TD>dz</TD>
+<TD>dz</TD>
+<TD>dz</TD>
+<TD>43</TD>
+</TR>
+<tr><th>清</th><td>心</TD>
+<TD>s</TD>
+<TD>s</TD>
+<TD>s</TD>
+<TD>s</TD>
+<TD>s</TD>
+<TD>44</TD>
+</TR>
+<tr><th>濁</th><td>邪</TD>
+<TD>z</TD>
+<TD>z</TD>
+<TD>z</TD>
+<TD>z</TD>
+<TD>z</TD>
+<TD>45</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="5">正齒</th>
+	<th>全清</th>
+	<TD>莊</TD>
+<TD>tʃ</TD>
+<TD>tʂ</TD>
+<TD>tʃ</TD>
+<TD>tʃ</TD>
+<TD>tʃ</TD>
+<TD>51</TD>
+</TR>
+<tr><th>次清</th><td>初</TD>
+<TD>tʃh</TD>
+<TD>tʂh</TD>
+<TD>tʃ‘</TD>
+<TD>tʃ‘</TD>
+<TD>tʃ‘</TD>
+<TD>52</TD>
+</TR>
+<tr><th>全濁</th><td>崇</TD>
+<TD>dʒ</TD>
+<TD>dʐ</TD>
+<TD>dʒ</TD>
+<TD>dʒ</TD>
+<TD>dʒ</TD>
+<TD>53</TD>
+</TR>
+<tr><th>清</th><td>生</TD>
+<TD>ʃ</TD>
+<TD>ʃ</TD>
+<TD>ʃ</TD>
+<TD>ʃ</TD>
+<TD>ʃ</TD>
+<TD>54</TD>
+</TR>
+<tr><th>濁</th><td>俟</TD>
+<TD>ʒ</TD>
+<TD>ʐ</TD>
+<TD>ʒ</TD>
+<TD>ʒ</TD>
+<TD>ʒ</TD>
+<TD>55</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="5">正齒</th>
+	<th>全清</th>
+
+	<TD>章</TD>
+<TD>tɕ</TD>
+<TD>tɕ</TD>
+<TD>tɕ</TD>
+<TD>tɕ</TD>
+<TD>tɕ</TD>
+<TD>61</TD>
+</TR>
+<tr><th>次清</th><td>昌</TD>
+<TD>tɕh</TD>
+<TD>tɕh</TD>
+<TD>tɕ‘</TD>
+<TD>tɕ‘</TD>
+<TD>tɕ‘</TD>
+<TD>62</TD>
+</TR>
+<tr><th>全濁</th><td>常</TD>
+<TD>dʑ</TD>
+<TD>dʑ</TD>
+<TD>ʑ</TD>
+<TD>dʑ</TD>
+<TD>ʑ</TD>
+<TD>63</TD>
+</TR>
+<tr><th>清</th><td>書</TD>
+<TD>ɕ</TD>
+<TD>ɕ</TD>
+<TD>ɕ</TD>
+<TD>ɕ</TD>
+<TD>ɕ</TD>
+<TD>64</TD>
+</TR>
+<tr><th>濁</th><td>船</TD>
+<TD>ʑ</TD>
+<TD>ʑ</TD>
+<TD>dʑ</TD>
+<TD>ʑ</TD>
+<TD>dʑ</TD>
+<TD>65</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th>半齒</th>
+	<th>次濁</th><TD>日</TD>
+<TD>ȵ</TD>
+<TD>ȵ</TD>
+<TD>ȵʑ</TD>
+<TD>ȵʑ</TD>
+<TD>ȵ</TD>
+<TD>66</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="4">牙</th>
+	<th>全清</th>
+	<TD>見</TD>
+<TD>k</TD>
+<TD>k</TD>
+<TD>k</TD>
+<TD>k</TD>
+<TD>k</TD>
+<TD>71</TD>
+</TR>
+<tr><th>次清</th><td>溪</TD>
+<TD>kh</TD>
+<TD>kh</TD>
+<TD>k‘</TD>
+<TD>k‘</TD>
+<TD>k‘</TD>
+<TD>72</TD>
+</TR>
+<tr><th>全濁</th><td>群</TD>
+<TD>ɡ</TD>
+<TD>ɡ</TD>
+<TD>ɡ</TD>
+<TD>ɡ</TD>
+<TD>ɡ</TD>
+<TD>73</TD>
+</TR>
+<tr><th>次濁</th><td>疑</TD>
+<TD>ŋ</TD>
+<TD>ŋ</TD>
+<TD>ŋ</TD>
+<TD>ŋ</TD>
+<TD>ŋ</TD>
+<TD>74</TD>
+</TR>
+<tr><td colspan="8"> </td></tr>
+<TR><th rowspan="5">喉</th>
+	<th>全清</th>
+	<TD>影</TD>
+<TD>ʔ</TD>
+<TD>ʔ</TD>
+<TD></TD>
+<TD>ʔ</TD>
+<TD>ʔ</TD>
+<TD>81</TD>
+</TR>
+<tr><th>清</th><td>曉</TD>
+<TD>h</TD>
+<TD>h</TD>
+<TD>x</TD>
+<TD>x</TD>
+<TD>x</TD>
+<TD>82</TD>
+</TR>
+<tr><th>濁</th><td>匣</TD>
+<TD>ɦ</TD>
+<TD>ɦ</TD>
+<TD>ɣ</TD>
+<TD>ɣ</TD>
+<TD>ɣ</TD>
+<TD>83</TD>
+</TR>
+<tr><th>次濁</th><td>云</TD>
+<TD>ɦ</TD>
+<TD>ɦ</TD>
+<TD>ɣ</TD>
+<TD>ɣ</TD>
+<TD>ɣ</TD>
+<TD>84</TD>
+</TR>
+<tr><th>次濁</th><td>以</TD>
+<TD>j</TD>
+<TD>j</TD>
+<TD>j</TD>
+<TD></TD>
+<TD></TD>
+<TD>85</TD>
+</TR>
+</tbody>
+</table>
+<table class="struct" id="hiunntable" style="display:none">
+<tbody>
+<tr><th></th><th>鄭張尚芳</th><th>潘悟雲</th><th>王力</th><th>邵榮芬</th><th>李榮</th><th>代碼</th></tr>
+<tr><th>東一</th><td>uŋ</td><td>uŋ</td><td>uŋ</td><td>uŋ</td><td>uŋ</td><td>c1a0</td></tr>
+<tr><th>東三</th><td>ɨuŋ</td><td>iuŋ</td><td>ĭuŋ</td><td>iuŋ</td><td>iuŋ</td><td>c4a0</td></tr>
+<tr><th>屋一</th><td>uk</td><td>uk</td><td>uk</td><td>uk</td><td>uk</td><td>c1a1</td></tr>
+<tr><th>屋三</th><td>ɨuk</td><td>iuk</td><td>ĭuk</td><td>iuk</td><td>iuk</td><td>c4a1</td></tr>
+<tr><th>冬</th><td>uoŋ</td><td>uoŋ</td><td>uoŋ</td><td>oŋ</td><td>oŋ</td><td>c1b0</td></tr>
+<tr><th>沃</th><td>uok</td><td>uok</td><td>uok</td><td>ok</td><td>ok</td><td>c1b1</td></tr>
+<tr><th>鍾</th><td>ɨoŋ</td><td>ioŋ</td><td>ĭwoŋ</td><td>ioŋ</td><td>ioŋ</td><td>c4b0</td></tr>
+<tr><th>燭</th><td>ɨok</td><td>iok</td><td>ĭwok</td><td>iok</td><td>iok</td><td>c4b1</td></tr>
+<tr><th>江</th><td>ɣʌŋ</td><td>ɯɔŋ</td><td>ɔŋ</td><td>ɔŋ</td><td>ɔŋ</td><td>c2c0</td></tr>
+<tr><th>覺</th><td>ɣʌk</td><td>ɯɔk</td><td>ɔk</td><td>ɔk</td><td>ɔk</td><td>c2c1</td></tr>
+<tr><th>支A開</th><td>iᴇ</td><td>iɛ</td><td>ǐe</td><td>jɛ</td><td>ie</td><td>c5d0</td></tr>
+<tr><th>支A合</th><td>iuᴇ</td><td>ʷiɛ</td><td>ǐwe</td><td>juɛ</td><td>iue</td><td>o5d0</td></tr>
+<tr><th>支B開</th><td>ɣiᴇ</td><td>ɯiɛ</td><td>ǐe</td><td>iɛ</td><td>je</td><td>c6d0</td></tr>
+<tr><th>支B合</th><td>ɣiuᴇ</td><td>ʷɯiɛ</td><td>ǐwe</td><td>iuɛ</td><td>jue</td><td>o6d0</td></tr>
+<tr><th>脂A開</th><td>iɪ</td><td>i</td><td>i</td><td>jɪ</td><td>i</td><td>c5e0</td></tr>
+<tr><th>脂A合</th><td>iuɪ</td><td>ʷi</td><td>wi</td><td>juɪ</td><td>ui</td><td>o5e0</td></tr>
+<tr><th>脂B開</th><td>ɣiɪ</td><td>ɯi</td><td>i</td><td>iɪ</td><td>ji</td><td>c6e0</td></tr>
+<tr><th>脂B合</th><td>ɣiuɪ</td><td>ʷɯi</td><td>wi</td><td>iuɪ</td><td>jui</td><td>o6e0</td></tr>
+<tr><th>之</th><td>ɨ</td><td>ɨ</td><td>ĭə</td><td>ie</td><td>iə</td><td>c4e0</td></tr>
+<tr><th>微開</th><td>ɨi</td><td>ɨi</td><td>ĭəi</td><td>iəi</td><td>iəi</td><td>c3e0</td></tr>
+<tr><th>微合</th><td>ʉi</td><td>ʷɨi</td><td>ĭwəi</td><td>iuəi</td><td>iuəi</td><td>o3e0</td></tr>
+<tr><th>魚</th><td>ɨʌ</td><td>iɔ</td><td>ĭo</td><td>iɔ</td><td>iɔ</td><td>c4f0</td></tr>
+<tr><th>模</th><td>uo</td><td>uo</td><td>u</td><td>o</td><td>o</td><td>c1g0</td></tr>
+<tr><th>虞</th><td>ɨo</td><td>io</td><td>ĭu</td><td>io</td><td>io</td><td>o4g0</td></tr>
+<tr><th>泰開</th><td>ɑi</td><td>ɑi</td><td>ɑi</td><td>ɑi</td><td>ɑi</td><td>c1h0</td></tr>
+<tr><th>泰合</th><td>uɑi</td><td>ʷɑi</td><td>uɑi</td><td>uɑi</td><td>uɑi</td><td>o1h0</td></tr>
+<tr><th>廢開</th><td>ɨɐi</td><td>iɐi</td><td>ĭɐi</td><td>iɐi</td><td>iɐi</td><td>c3h0</td></tr>
+<tr><th>廢合</th><td>ʉɐi</td><td>ʷiɐi</td><td>ĭwɐi</td><td>iuɐi</td><td>iuɐi</td><td>o3h0</td></tr>
+<tr><th>夬開</th><td>ɣai</td><td>ɯai</td><td>æi</td><td>ai</td><td>ai</td><td>c2h0</td></tr>
+<tr><th>夬合</th><td>ɣuai</td><td>ʷɯai</td><td>wæi</td><td>uai</td><td>uai</td><td>o2h0</td></tr>
+<tr><th>佳開</th><td>ɣɛ</td><td>ɯæ</td><td>ai</td><td>æi</td><td>ɛ</td><td>c2j0</td></tr>
+<tr><th>佳合</th><td>ɣuɛ</td><td>ʷɯæ</td><td>wai</td><td>uæi</td><td>uɛ</td><td>o2j0</td></tr>
+<tr><th>皆開</th><td>ɣɛi</td><td>ɯæi</td><td>ɐi</td><td>ɐi</td><td>ɛi</td><td>c2i0</td></tr>
+<tr><th>皆合</th><td>ɣuɛi</td><td>ʷɯæi</td><td>wɐi</td><td>uɐi</td><td>uɛi</td><td>o2i0</td></tr>
+<tr><th>祭A開</th><td>iᴇi</td><td>iɛi</td><td>ĭɛi</td><td>jæi</td><td>iɛi</td><td>c5i0</td></tr>
+<tr><th>祭A合</th><td>iuᴇi</td><td>ʷiɛi</td><td>ĭwɛi</td><td>(t)iuæi</td><td>iuɛi</td><td>o5i0</td></tr>
+<tr><th>祭B開</th><td>ɣiᴇi</td><td>ɯiɛi</td><td>ĭɛi</td><td>iæi</td><td>jɛi</td><td>c6i0</td></tr>
+<tr><th>祭B合</th><td>ɣiuᴇi</td><td>ʷɯiei</td><td>ĭwɛi</td><td>iuæi</td><td>juɛi</td><td>o6i0</td></tr>
+<tr><th>齊開</th><td>ei</td><td>ei</td><td>iei</td><td>ɛi</td><td>ei</td><td>c7i0</td></tr>
+<tr><th>齊合</th><td>wei</td><td>ʷei</td><td>iwei</td><td>uɛi</td><td>uei</td><td>o7i0</td></tr>
+<tr><th>齊三</th><td>iei</td><td>iei</td><td>iei</td><td>iei</td><td>iei</td><td>c4i0</td></tr>
+<tr><th>咍</th><td>ʌi</td><td>əi</td><td>ɒi</td><td>ɒi</td><td>Ai</td><td>c1i0</td></tr>
+<tr><th>咍三</th><td>iʌi</td><td>iəi</td><td>ĭɒi</td><td>iɒi</td><td>iAi</td><td>c4h0</td></tr>
+<tr><th>灰</th><td>uʌi</td><td>uoi</td><td>uɒi</td><td>uɒi</td><td>uAi</td><td>o1i0</td></tr>
+<tr><th>眞A</th><td>iɪn</td><td>in</td><td>ĭĕn</td><td>jen</td><td>iĕn</td><td>c5k0</td></tr>
+<tr><th>眞B開</th><td>ɣiɪn</td><td>ɯin</td><td>——</td><td>ien</td><td>jĕn</td><td>c6k0</td></tr>
+<tr><th>眞B合</th><td>ɣiuɪn</td><td>ʷɯin</td><td>——</td><td>iuen</td><td>juĕn</td><td>o6k0</td></tr>
+<tr><th>臻</th><td>ɪn</td><td>ɪn</td><td>ĭen</td><td>ien</td><td>iĕn</td><td>c6l0</td></tr>
+<tr><th>諄</th><td>iuɪn</td><td>ʷin</td><td>ĭuĕn</td><td>juen</td><td>iuĕn</td><td>o5k0</td></tr>
+<tr><th>質A</th><td>iɪt</td><td>it</td><td>ĭĕt</td><td>jet</td><td>iĕt</td><td>c5k1</td></tr>
+<tr><th>質B開</th><td>ɣiɪt</td><td>ɯit</td><td>——</td><td>iet</td><td>jĕt</td><td>c6k1</td></tr>
+<tr><th>質B合</th><td>ɣiuɪt</td><td>ʷɯit</td><td>——</td><td>iuet</td><td>juĕt</td><td>o6k1</td></tr>
+<tr><th>櫛</th><td>ɪt</td><td>ɪt</td><td>ĭet</td><td>iet</td><td>iĕt</td><td>c6l1</td></tr>
+<tr><th>術</th><td>iuɪt</td><td>ʷit</td><td>ĭuĕt</td><td>juet</td><td>iuĕt</td><td>o5k1</td></tr>
+<tr><th>痕</th><td>ən</td><td>ən</td><td>ən</td><td>ən</td><td>ən</td><td>c1k0</td></tr>
+<tr><th>痕（麧）</th><td>ət</td><td>ət</td><td>ət</td><td>ət</td><td>ət</td><td>c1k1</td></tr>
+<tr><th>魂</th><td>uən</td><td>uon</td><td>uən</td><td>uən</td><td>uən</td><td>o1k0</td></tr>
+<tr><th>沒</th><td>uət</td><td>uot</td><td>uət</td><td>uət</td><td>uət</td><td>o1k1</td></tr>
+<tr><th>欣</th><td>ɨn</td><td>ɨn</td><td>ĭən</td><td>iən</td><td>iən</td><td>c3k0</td></tr>
+<tr><th>迄</th><td>ɨt</td><td>ɨt</td><td>ĭət</td><td>iət</td><td>iət</td><td>c3k1</td></tr>
+<tr><th>文</th><td>ɨun</td><td>iun</td><td>ĭuən</td><td>iuən</td><td>iuən</td><td>o3k0</td></tr>
+<tr><th>物</th><td>ɨut</td><td>iut</td><td>ĭuət</td><td>iuət</td><td>iuət</td><td>o3k1</td></tr>
+<tr><th>寒</th><td>ɑn</td><td>ɑn</td><td>ɑn</td><td>ɑn</td><td>ɑn</td><td>c1m0</td></tr>
+<tr><th>桓</th><td>uɑn</td><td>ʷɑn</td><td>uɑn</td><td>uɑn</td><td>uɑn</td><td>o1m0</td></tr>
+<tr><th>曷</th><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>c1m1</td></tr>
+<tr><th>末</th><td>uɑt</td><td>ʷɑt</td><td>uɑt</td><td>uɑt</td><td>uɑt</td><td>o1m1</td></tr>
+<tr><th>元開</th><td>ɨɐn</td><td>iɐn</td><td>ĭɐn</td><td>iɐn</td><td>iɐn</td><td>c3m0</td></tr>
+<tr><th>元合</th><td>ʉɐn</td><td>ʷiɐn</td><td>ĭwɐn</td><td>iuɐn</td><td>iuɐn</td><td>o3m0</td></tr>
+<tr><th>月開</th><td>ɨɐt</td><td>iɐt</td><td>ĭɐt</td><td>iɐt</td><td>iɐt</td><td>c3m1</td></tr>
+<tr><th>月合</th><td>ʉɐt</td><td>ʷiɐt</td><td>ĭwɐn</td><td>iuɐt</td><td>iuɐt</td><td>o3m1</td></tr>
+<tr><th>刪開</th><td>ɣan</td><td>ɯan</td><td>an</td><td>ɐn</td><td>an</td><td>c2m0</td></tr>
+<tr><th>刪合</th><td>ɣuan</td><td>ʷɯan</td><td>wan</td><td>uɐn</td><td>uan</td><td>o2m0</td></tr>
+<tr><th>鎋開</th><td>ɣat</td><td>ɯat</td><td>at</td><td>ɐt</td><td>at</td><td>c2m1</td></tr>
+<tr><th>鎋合</th><td>ɣuat</td><td>ʷɯat</td><td>wat</td><td>uɐt</td><td>uat</td><td>o2m1</td></tr>
+<tr><th>山開</th><td>ɣɛn</td><td>ɯæn</td><td>æn</td><td>æn</td><td>ɛn</td><td>c2n0</td></tr>
+<tr><th>山合</th><td>ɣuɛn</td><td>ʷɯæn</td><td>wæn</td><td>uæn</td><td>uɛn</td><td>o2n0</td></tr>
+<tr><th>黠開</th><td>ɣɛt</td><td>ɯæt</td><td>æt</td><td>æt</td><td>ɛt</td><td>c2n1</td></tr>
+<tr><th>黠合</th><td>ɣuɛt</td><td>ʷɯæt</td><td>wæt</td><td>uæt</td><td>uɛt</td><td>o2n1</td></tr>
+<tr><th>仙A開</th><td>iᴇn</td><td>iɛn</td><td>ĭɛn</td><td>jæn</td><td>iɛn</td><td>c5n0</td></tr>
+<tr><th>仙A合</th><td>iuᴇn</td><td>ʷiɛn</td><td>ĭwɛn</td><td>juæn</td><td>iuɛn</td><td>o5n0</td></tr>
+<tr><th>仙B開</th><td>ɣiᴇn</td><td>ɯiɛn</td><td>ĭɛn</td><td>iæn</td><td>jɛn</td><td>c6n0</td></tr>
+<tr><th>仙B合</th><td>ɣiuᴇn</td><td>ʷɯiɛn</td><td>ĭwɛn</td><td>iuæn</td><td>juɛn</td><td>o6n0</td></tr>
+<tr><th>薛A開</th><td>iᴇt</td><td>iɛt</td><td>ĭɛt</td><td>jæt</td><td>iɛt</td><td>c5n1</td></tr>
+<tr><th>薛A合</th><td>iuᴇt</td><td>ʷiɛt</td><td>ĭuɛt</td><td>juæt</td><td>iuɛt</td><td>o5n1</td></tr>
+<tr><th>薛B開</th><td>ɣiᴇt</td><td>ɯiɛt</td><td>ĭɛt</td><td>iæt</td><td>jɛt</td><td>c6n1</td></tr>
+<tr><th>薛B合</th><td>ɣiuᴇt</td><td>ʷɯiet</td><td>ĭuɛt</td><td>iuæt</td><td>juɛt</td><td>o6n1</td></tr>
+<tr><th>先開</th><td>en</td><td>en</td><td>ien</td><td>ɛn</td><td>en</td><td>c7n0</td></tr>
+<tr><th>先合</th><td>wen</td><td>ʷen</td><td>iwen</td><td>uɛn</td><td>uen</td><td>o7n0</td></tr>
+<tr><th>屑開</th><td>et</td><td>et</td><td>iet</td><td>ɛt</td><td>et</td><td>c7n1</td></tr>
+<tr><th>屑合</th><td>wet</td><td>ʷet</td><td>iwet</td><td>uɛt</td><td>uet</td><td>o7n1</td></tr>
+<tr><th>末＊</th><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>ɑt</td><td>c1n1</td></tr>
+<tr><th>豪</th><td>ɑu</td><td>ɑu</td><td>ɑu</td><td>ɑu</td><td>ɑu</td><td>c1o0</td></tr>
+<tr><th>肴</th><td>ɣau</td><td>ɯau</td><td>au</td><td>au</td><td>au</td><td>c2o0</td></tr>
+<tr><th>宵A</th><td>iᴇu</td><td>iɛu</td><td>ĭɛu</td><td>jæu</td><td>iɛu</td><td>c5o0</td></tr>
+<tr><th>宵B</th><td>ɣiᴇu</td><td>ɯiɛu</td><td>ĭɛu</td><td>iæu</td><td>jɛu</td><td>c6o0</td></tr>
+<tr><th>蕭</th><td>eu</td><td>eu</td><td>ieu</td><td>eu</td><td>eu</td><td>c7o0</td></tr>
+<tr><th>歌</th><td>ɑ</td><td>ɑ</td><td>ɑ</td><td>ɑ</td><td>ɑ</td><td>c1p0</td></tr>
+<tr><th>戈</th><td>uɑ</td><td>uɑ</td><td>uɑ</td><td>uɑ</td><td>uɑ</td><td>o1p0</td></tr>
+<tr><th>戈三開</th><td>ɨɑ</td><td>iɑ</td><td>ǐɑ</td><td>iɑ</td><td>iɑ</td><td>c3p0</td></tr>
+<tr><th>戈三合</th><td>ɨuɑ</td><td>ʷiɑ</td><td>ĭuɑ</td><td>iuɑ</td><td>iuɑ</td><td>o3p0</td></tr>
+<tr><th>麻</th><td>ɣa</td><td>ɯa</td><td>a</td><td>a</td><td>a</td><td>c2q0</td></tr>
+<tr><th>麻合</th><td>ɣua</td><td>ʷɯa</td><td>wa</td><td>ua</td><td>ua</td><td>o2q0</td></tr>
+<tr><th>麻三</th><td>ia</td><td>ia</td><td>ĭa</td><td>ia</td><td>ia</td><td>c4q0</td></tr>
+<tr><th>唐開</th><td>ɑŋ</td><td>ɑŋ</td><td>ɑŋ</td><td>ɑŋ</td><td>ɑŋ</td><td>c1r0</td></tr>
+<tr><th>唐合</th><td>wɑŋ</td><td>ʷɑŋ</td><td>uɑŋ</td><td>uɑŋ</td><td>uɑŋ</td><td>o1r0</td></tr>
+<tr><th>鐸開</th><td>ɑk</td><td>ɑk</td><td>ɑk</td><td>ɑk</td><td>ɑk</td><td>c1r1</td></tr>
+<tr><th>鐸合</th><td>wɑk</td><td>ʷɑk</td><td>uɑk</td><td>uɑk</td><td>uɑk</td><td>o1r1</td></tr>
+<tr><th>陽開</th><td>ɨɐŋ</td><td>iɐŋ</td><td>ĭaŋ</td><td>iɑŋ</td><td>iaŋ</td><td>c4r0</td></tr>
+<tr><th>陽合</th><td>ʉɐŋ</td><td>ʷiɐŋ</td><td>ĭwaŋ</td><td>iuɑŋ</td><td>iuaŋ</td><td>o4r0</td></tr>
+<tr><th>藥開</th><td>ɨɐk</td><td>iɐk</td><td>ĭak</td><td>iɑk</td><td>iak</td><td>c4r1</td></tr>
+<tr><th>藥合</th><td>ʉɐk</td><td>ʷiɐk</td><td>ĭak</td><td>iuɑk</td><td>iuak</td><td>o4r1</td></tr>
+<tr><th>庚二開</th><td>ɣæŋ</td><td>ɯaŋ</td><td>ɐŋ</td><td>aŋ</td><td>ɐŋ</td><td>c2s0</td></tr>
+<tr><th>庚二合</th><td>wɣæŋ</td><td>ʷɯaŋ</td><td>wɐŋ</td><td>uaŋ</td><td>uɐŋ</td><td>o2s0</td></tr>
+<tr><th>庚三開</th><td>ɣiæŋ</td><td>ɯiaŋ</td><td>ĭɐŋ</td><td>iaŋ</td><td>iɐŋ</td><td>c3s0</td></tr>
+<tr><th>庚三合</th><td>wɣiæŋ</td><td>ʷɯiaŋ</td><td>ĭwɐŋ</td><td>iuaŋ</td><td>iuɐŋ</td><td>o3s0</td></tr>
+<tr><th>陌二開</th><td>ɣæk</td><td>ɯak</td><td>ɐk</td><td>ak</td><td>ɐk</td><td>c2s1</td></tr>
+<tr><th>陌二合</th><td>wɣæk</td><td>ʷɯak</td><td>wɐk</td><td>uak</td><td>uɐk</td><td>o2s1</td></tr>
+<tr><th>陌三開</th><td>ɣiæk</td><td>ɯiak</td><td>ĭɐk</td><td>iak</td><td>iɐk</td><td>c3s1</td></tr>
+<tr><th>陌三合</th><td>wɣiæk</td><td>ʷɯiak</td><td>ĭwɐk</td><td>iuak</td><td>iuɐk</td><td>o3s1</td></tr>
+<tr><th>耕開</th><td>ɣɛŋ</td><td>ɯæŋ</td><td>æŋ</td><td>ɐŋ</td><td>ɛŋ</td><td>c2t0</td></tr>
+<tr><th>耕合</th><td>wɣɛŋ</td><td>ʷɯæŋ</td><td>wæŋ</td><td>uɐŋ</td><td>uɛŋ</td><td>o2t0</td></tr>
+<tr><th>麥開</th><td>ɣɛk</td><td>ɯæk</td><td>æk</td><td>ɐk</td><td>ɛk</td><td>c2t1</td></tr>
+<tr><th>麥合</th><td>wɣɛk</td><td>ʷɯæk</td><td>wæk</td><td>uɐk</td><td>uɛk</td><td>o2t1</td></tr>
+<tr><th>清開</th><td>iᴇŋ</td><td>iɛŋ</td><td>ĭɛŋ</td><td>iæŋ</td><td>iɛŋ</td><td>c4t0</td></tr>
+<tr><th>清合</th><td>wiᴇŋ</td><td>ʷiɛŋ</td><td>ĭwɛŋ</td><td>iuæŋ</td><td>iuɛŋ</td><td>o4t0</td></tr>
+<tr><th>昔開</th><td>iᴇk</td><td>iɛk</td><td>ĭɛk</td><td>iæk</td><td>iɛk</td><td>c4t1</td></tr>
+<tr><th>昔合</th><td>wiᴇk</td><td>ʷiɛk</td><td>ĭwɛk</td><td>iuæk</td><td>iuɛk</td><td>o4t1</td></tr>
+<tr><th>青開</th><td>eŋ</td><td>eŋ</td><td>ieŋ</td><td>ɛŋ</td><td>eŋ</td><td>c7t0</td></tr>
+<tr><th>青合</th><td>weŋ</td><td>ʷeŋ</td><td>iweŋ</td><td>uɛŋ</td><td>ueŋ</td><td>o7t0</td></tr>
+<tr><th>錫開</th><td>ek</td><td>ek</td><td>iek</td><td>ɛk</td><td>ek</td><td>c7t1</td></tr>
+<tr><th>錫合</th><td>wek</td><td>ʷek</td><td>iwek</td><td>uɛk</td><td>uek</td><td>o7t1</td></tr>
+<tr><th>登開</th><td>əŋ</td><td>əŋ</td><td>əŋ</td><td>əŋ</td><td>əŋ</td><td>c1u0</td></tr>
+<tr><th>登合</th><td>wəŋ</td><td>ʷəŋ</td><td>uəŋ</td><td>uəŋ</td><td>uəŋ</td><td>o1u0</td></tr>
+<tr><th>德開</th><td>ək</td><td>ək</td><td>ək</td><td>ək</td><td>ək</td><td>c1u1</td></tr>
+<tr><th>德合</th><td>wək</td><td>ʷək</td><td>uək</td><td>uək</td><td>uək</td><td>o1u1</td></tr>
+<tr><th>蒸</th><td>ɨŋ</td><td>ɨŋ</td><td>ĭəŋ</td><td>ieŋ</td><td>iəŋ</td><td>c4u0</td></tr>
+<tr><th>職開</th><td>ɨk</td><td>ɨk</td><td>ĭək</td><td>iek</td><td>iək</td><td>c4u1</td></tr>
+<tr><th>職合</th><td>wɨk</td><td>ʷɨk</td><td>ĭwək</td><td>iuek</td><td>iuək</td><td>o4u1</td></tr>
+<tr><th>尤</th><td>ɨu</td><td>iu</td><td>ĭəu</td><td>iəu</td><td>iu</td><td>c4v0</td></tr>
+<tr><th>侯</th><td>əu</td><td>əu</td><td>əu</td><td>əu</td><td>u</td><td>c1v0</td></tr>
+<tr><th>幽</th><td>iɪu</td><td>ɨu</td><td>iəu</td><td>ieu</td><td>iĕu</td><td>c4w0</td></tr>
+<tr><th>侵A</th><td>iɪm</td><td>im</td><td>ĭĕm</td><td>jem</td><td>iəm</td><td>c5x0</td></tr>
+<tr><th>侵B</th><td>ɣiɪm</td><td>ɯim</td><td>ĭĕm</td><td>iem</td><td>jəm</td><td>c6x0</td></tr>
+<tr><th>緝A</th><td>iɪp</td><td>ip</td><td>ĭĕp</td><td>jep</td><td>iəp</td><td>c5x1</td></tr>
+<tr><th>緝B</th><td>ɣiɪp</td><td>ɯip</td><td>ĭĕp</td><td>iep</td><td>jəp</td><td>c6x1</td></tr>
+<tr><th>談</th><td>ɑm</td><td>ɑm</td><td>ɑm</td><td>ɑm</td><td>ɑm</td><td>c1y0</td></tr>
+<tr><th>盍</th><td>ɑp</td><td>ɑp</td><td>ɑp</td><td>ɑp</td><td>ɑp</td><td>c1y1</td></tr>
+<tr><th>嚴</th><td>ɨɐm</td><td>iɐm</td><td>ĭɐm</td><td>iɐm</td><td>iɐm</td><td>c3y0</td></tr>
+<tr><th>凡</th><td>ɨɐm</td><td>iɐm</td><td>ĭwɐm</td><td>iɐm</td><td>iɐm</td><td>o3z0</td></tr>
+<tr><th>業</th><td>ɨɐp</td><td>iɐp</td><td>ĭɐp</td><td>iɐp</td><td>iap</td><td>c3y1</td></tr>
+<tr><th>乏</th><td>ɨɐp</td><td>iɐp</td><td>ĭwɐp</td><td>iɐp</td><td>iɐp</td><td>o3z1</td></tr>
+<tr><th>銜</th><td>ɣam</td><td>ɯam</td><td>am</td><td>am</td><td>am</td><td>c2y0</td></tr>
+<tr><th>狎</th><td>ɣap</td><td>ɯap</td><td>ap</td><td>ap</td><td>ap</td><td>c2y1</td></tr>
+<tr><th>咸</th><td>ɣɛm</td><td>ɯæm</td><td>ɐm</td><td>ɐm</td><td>ɐm</td><td>c2z0</td></tr>
+<tr><th>洽</th><td>ɣɛp</td><td>ɯæp</td><td>ɐp</td><td>ɐp</td><td>ɐp</td><td>c2z1</td></tr>
+<tr><th>鹽A</th><td>iᴇm</td><td>iɛm</td><td>ĭɛm</td><td>jæm</td><td>iɛm</td><td>c5z0</td></tr>
+<tr><th>鹽B</th><td>ɣiᴇm</td><td>ɯiɛm</td><td>ĭɛm</td><td>iæm</td><td>jɛm</td><td>c6z0</td></tr>
+<tr><th>葉A</th><td>iᴇp</td><td>iɛp</td><td>ĭɛp</td><td>jæp</td><td>iɛp</td><td>c5z1</td></tr>
+<tr><th>葉B</th><td>ɣiᴇp</td><td>ɯiɛp</td><td>ĭɛp</td><td>iæp</td><td>jɛp</td><td>c6z1</td></tr>
+<tr><th>添</th><td>em</td><td>em</td><td>iem</td><td>ɛm</td><td>em</td><td>c7z0</td></tr>
+<tr><th>貼</th><td>ep</td><td>ep</td><td>iep</td><td>ɛp</td><td>ep</td><td>c7z1</td></tr>
+<tr><th>覃</th><td>ʌm</td><td>əm</td><td>ɒm</td><td>ɒm</td><td>Am</td><td>c1z0</td></tr>
+<tr><th>合</th><td>ʌp</td><td>əp</td><td>ɒp</td><td>ɒp</td><td>Ap</td><td>c1z1</td></tr>
+</tbody>
+</table>
+
+<table style="display:none" id="miuktable" class="struct">
+<tbody>
+<tr><th>上平聲</th><th>上聲</th><th>去聲</th><th>入聲</th></tr>
+<tr><td><a href="javascript:cmd('hiunn','東')">東</a>第一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','董')">董</a>第一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','送')">送</a>第一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','屋')">屋</a>第一<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','冬')">冬</a>第二<small>(鍾同用)</small></td><td>○</td><td><a href="javascript:cmd('hiunn','宋')">宋</a>第二<small>(用同用)</small></td><td><a href="javascript:cmd('hiunn','沃')">沃</a>第二<small>(燭同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','鍾')">鍾</a>第三</td><td><a href="javascript:cmd('hiunn','腫')">腫</a>第二<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','用')">用</a>第三</td><td><a href="javascript:cmd('hiunn','燭')">燭</a>第三</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','江')">江</a>第四<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','講')">講</a>第三<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','絳')">絳</a>第四<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','覺')">覺</a>第四<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','支')">支</a>第五<small>(脂之同用)</small></td><td><a href="javascript:cmd('hiunn','紙')">紙</a>第四<small>(旨止同用)</small></td><td><a href="javascript:cmd('hiunn','寘')">寘</a>第五<small>(至志同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','脂')">脂</a>第六</td><td><a href="javascript:cmd('hiunn','旨')">旨</a>第五</td><td><a href="javascript:cmd('hiunn','至')">至</a>第六</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','之')">之</a>第七</td><td><a href="javascript:cmd('hiunn','止')">止</a>第六</td><td><a href="javascript:cmd('hiunn','志')">志</a>第七</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','微')">微</a>第八<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','尾')">尾</a>第七<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','未')">未</a>第八<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','魚')">魚</a>第九<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','語')">語</a>第八<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','御')">御</a>第九<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','虞')">虞</a>第十<small>(模同用)</small></td><td><a href="javascript:cmd('hiunn','麌')">麌</a>第九<small>(姥同用)</small></td><td><a href="javascript:cmd('hiunn','遇')">遇</a>第十<small>(暮同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','模')">模</a>第十一</td><td><a href="javascript:cmd('hiunn','姥')">姥</a>第十</td><td><a href="javascript:cmd('hiunn','暮')">暮</a>第十一</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','齊')">齊</a>第十二<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','薺')">薺</a>第十一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','霽')">霽</a>第十二<small>(祭同用)</small></td><td/></tr>
+<tr><td>○</td><td>○</td><td><a href="javascript:cmd('hiunn','祭')">祭</a>第十三</td><td/></tr>
+<tr><td>○</td><td>○</td><td><a href="javascript:cmd('hiunn','泰')">泰</a>第十四<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','佳')">佳</a>第十三<small>(皆同用)</small></td><td><a href="javascript:cmd('hiunn','蟹')">蟹</a>第十二<small>(駭同用)</small></td><td><a href="javascript:cmd('hiunn','卦')">卦</a>第十五<small>(怪夬同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','皆')">皆</a>第十四</td><td><a href="javascript:cmd('hiunn','駭')">駭</a>第十三</td><td><a href="javascript:cmd('hiunn','怪')">怪</a>第十六</td><td/></tr>
+<tr><td>○</td><td>○</td><td><a href="javascript:cmd('hiunn','夬')">夬</a>第十七</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','灰')">灰</a>第十五<small>(咍同用)</small></td><td><a href="javascript:cmd('hiunn','賄')">賄</a>第十四<small>(海同用)</small></td><td><a href="javascript:cmd('hiunn','隊')">隊</a>第十八<small>(代同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','咍')">咍</a>第十六</td><td><a href="javascript:cmd('hiunn','海')">海</a>第十五</td><td><a href="javascript:cmd('hiunn','代')">代</a>第十九</td><td/></tr>
+<tr><td>○</td><td>○</td><td><a href="javascript:cmd('hiunn','廢')">廢</a>第二十<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','眞')">眞</a>第十七<small>(諄臻同用)</small></td><td><a href="javascript:cmd('hiunn','軫')">軫</a>第十六<small>(準同用)</small></td><td><a href="javascript:cmd('hiunn','震')">震</a>第二十一<small>(稕同用)</small></td><td><a href="javascript:cmd('hiunn','質')">質</a>第五<small>(術櫛同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','諄')">諄</a>第十八</td><td><a href="javascript:cmd('hiunn','準')">準</a>第十七</td><td><a href="javascript:cmd('hiunn','稕')">稕</a>第二十二</td><td><a href="javascript:cmd('hiunn','術')">術</a>第六</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','臻')">臻</a>第十九</td><td>○</td><td>○</td><td><a href="javascript:cmd('hiunn','櫛')">櫛</a>第七</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','文')">文</a>第二十<small>(欣同用：非)</small></td><td><a href="javascript:cmd('hiunn','吻')">吻</a>第十八<small>(隱同用)</small></td><td><a href="javascript:cmd('hiunn','問')">問</a>第二十三<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','物')">物</a>第八<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','欣')">欣</a>第二十一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','隱')">隱</a>第十九</td><td><a href="javascript:cmd('hiunn','焮')">焮</a>第二十四<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','迄')">迄</a>第九<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','元')">元</a>第二十二<small>(魂痕同用)</small></td><td><a href="javascript:cmd('hiunn','阮')">阮</a>第二十<small>(混很同用)</small></td><td><a href="javascript:cmd('hiunn','願')">願</a>第二十五<small>(慁恨同用)</small></td><td><a href="javascript:cmd('hiunn','月')">月</a>第十<small>(沒同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','魂')">魂</a>第二十三</td><td><a href="javascript:cmd('hiunn','混')">混</a>第二十一</td><td><a href="javascript:cmd('hiunn','慁')">慁</a>第二十六</td><td><a href="javascript:cmd('hiunn','沒')">沒</a>第十一</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','痕')">痕</a>第二十四</td><td><a href="javascript:cmd('hiunn','很')">很</a>第二十二</td><td><a href="javascript:cmd('hiunn','恨')">恨</a>第二十七</td><td><small>(麧字見沒韻)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','寒')">寒</a>第二十五<small>(寒同用)</small></td><td><a href="javascript:cmd('hiunn','旱')">旱</a>第二十三<small>(緩同用)</small></td><td><a href="javascript:cmd('hiunn','翰')">翰</a>第二十八<small>(換同用)</small></td><td><a href="javascript:cmd('hiunn','曷')">曷</a>第十二<small>(末同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','桓')">桓</a>第二十六</td><td><a href="javascript:cmd('hiunn','緩')">緩</a>第二十四</td><td><a href="javascript:cmd('hiunn','換')">換</a>第二十九</td><td><a href="javascript:cmd('hiunn','末')">末</a>第十三</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','刪')">刪</a>第二十七<small>(山同用)</small></td><td><a href="javascript:cmd('hiunn','潸')">潸</a>第二十五<small>(産同用)</small></td><td><a href="javascript:cmd('hiunn','諫')">諫</a>第三十<small>(襉同用)</small></td><td><a href="javascript:cmd('hiunn','鎋')">鎋</a>第十五</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','山')">山</a>第二十八</td><td><a href="javascript:cmd('hiunn','産')">産</a>第二十六</td><td><a href="javascript:cmd('hiunn','襉')">襉</a>第三十一</td><td><a href="javascript:cmd('hiunn','黠')">黠</a>第十四<small>(鎋同用)</small></td></tr>
+<tr><th>下平聲</th><th>上聲</th><th>去聲</th><th>入聲</th></tr>
+<tr><td><a href="javascript:cmd('hiunn','先')">先</a>第一<small>(仙同用)</small></td><td><a href="javascript:cmd('hiunn','銑')">銑</a>第二十七<small>(獮同用)</small></td><td><a href="javascript:cmd('hiunn','霰')">霰</a>第三十二<small>(線同用)</small></td><td><a href="javascript:cmd('hiunn','屑')">屑</a>第十六<small>(薛同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','仙')">仙</a>第二</td><td><a href="javascript:cmd('hiunn','獮')">獮</a>第二十八</td><td><a href="javascript:cmd('hiunn','線')">線</a>第三十三</td><td><a href="javascript:cmd('hiunn','薛')">薛</a>第十七</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','蕭')">蕭</a>第三<small>(宵同用)</small></td><td><a href="javascript:cmd('hiunn','篠')">篠</a>第二十九<small>(小同用)</small></td><td><a href="javascript:cmd('hiunn','嘯')">嘯</a>第三十四<small>(笑同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','宵')">宵</a>第四</td><td><a href="javascript:cmd('hiunn','小')">小</a>第三十</td><td><a href="javascript:cmd('hiunn','笑')">笑</a>第三十五</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','肴')">肴</a>第五<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','巧')">巧</a>第三十一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','效')">效</a>第三十六<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','豪')">豪</a>第六<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','晧')">晧</a>第三十二<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','号')">号</a>第三十七<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','歌')">歌</a>第七<small>(戈同用)</small></td><td><a href="javascript:cmd('hiunn','哿')">哿</a>第三十三<small>(果同用)</small></td><td><a href="javascript:cmd('hiunn','箇')">箇</a>第三十八<small>(過同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','第')">第</a>八</td><td><a href="javascript:cmd('hiunn','果')">果</a>第三十四</td><td><a href="javascript:cmd('hiunn','過')">過</a>第三十九</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','麻')">麻</a>第九<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','馬')">馬</a>第三十五<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','禡')">禡</a>第四十<small>(獨用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','陽')">陽</a>第十<small>(唐同用)</small></td><td><a href="javascript:cmd('hiunn','養')">養</a>第三十六<small>(蕩同用)</small></td><td><a href="javascript:cmd('hiunn','漾')">漾</a>第四十一<small>(宕同用)</small></td><td><a href="javascript:cmd('hiunn','藥')">藥</a>第十八<small>(鐸同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','唐')">唐</a>第十一</td><td><a href="javascript:cmd('hiunn','蕩')">蕩</a>第三十七</td><td><a href="javascript:cmd('hiunn','宕')">宕</a>第四十二</td><td><a href="javascript:cmd('hiunn','鐸')">鐸</a>第十九</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','庚')">庚</a>第十二<small>(耕淸同用)</small></td><td><a href="javascript:cmd('hiunn','梗')">梗</a>第三十八<small>(耿靜同用)</small></td><td><a href="javascript:cmd('hiunn','映')">映</a>第四十三<small>(諍勁同用)</small></td><td><a href="javascript:cmd('hiunn','陌')">陌</a>第二十<small>(麥昔同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','耕')">耕</a>第十三</td><td><a href="javascript:cmd('hiunn','耿')">耿</a>第三十九</td><td><a href="javascript:cmd('hiunn','諍')">諍</a>第四十四</td><td><a href="javascript:cmd('hiunn','麥')">麥</a>第二十一</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','淸')">淸</a>第十四</td><td><a href="javascript:cmd('hiunn','靜')">靜</a>第四十</td><td><a href="javascript:cmd('hiunn','勁')">勁</a>第四十五</td><td><a href="javascript:cmd('hiunn','昔')">昔</a>第二十二</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','靑')">靑</a>第十五<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','迥')">迥</a>第四十一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','徑')">徑</a>第四十六<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','錫')">錫</a>第二十三<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','蒸')">蒸</a>第十六<small>(登同用)</small></td><td><a href="javascript:cmd('hiunn','拯')">拯</a>第四十二<small>(等同用)</small></td><td><a href="javascript:cmd('hiunn','證')">證</a>第四十七<small>(嶝同用)</small></td><td><a href="javascript:cmd('hiunn','職')">職</a>第二十四<small>(德同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','登')">登</a>第十七</td><td><a href="javascript:cmd('hiunn','等')">等</a>第四十三</td><td><a href="javascript:cmd('hiunn','嶝')">嶝</a>第四十八</td><td><a href="javascript:cmd('hiunn','德')">德</a>第二十五</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','尤')">尤</a>第十八<small>(侯幽同用)</small></td><td><a href="javascript:cmd('hiunn','有')">有</a>第四十四<small>(厚黝同用)</small></td><td><a href="javascript:cmd('hiunn','宥')">宥</a>第四十九<small>(候幼同用)</small></td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','侯')">侯</a>第十九</td><td><a href="javascript:cmd('hiunn','厚')">厚</a>第四十五</td><td><a href="javascript:cmd('hiunn','候')">候</a>第五十</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','幽')">幽</a>第二十</td><td><a href="javascript:cmd('hiunn','黝')">黝</a>第四十六</td><td><a href="javascript:cmd('hiunn','幼')">幼</a>第五十一</td><td/></tr>
+<tr><td><a href="javascript:cmd('hiunn','侵')">侵</a>第二十一<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','寑')">寑</a>第四十七<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','沁')">沁</a>第五十二<small>(獨用)</small></td><td><a href="javascript:cmd('hiunn','緝')">緝</a>第二十六<small>(獨用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','覃')">覃</a>第二十二<small>(談同用)</small></td><td><a href="javascript:cmd('hiunn','感')">感</a>第四十八<small>(敢同用)</small></td><td><a href="javascript:cmd('hiunn','勘')">勘</a>第五十三<small>(闞同用)</small></td><td><a href="javascript:cmd('hiunn','合')">合</a>第二十七<small>(盍同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','談')">談</a>第二十三</td><td><a href="javascript:cmd('hiunn','敢')">敢</a>第四十九</td><td><a href="javascript:cmd('hiunn','闞')">闞</a>第五十四</td><td><a href="javascript:cmd('hiunn','盍')">盍</a>第二十八</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','鹽')">鹽</a>第二十四<small>(添同用)</small></td><td><a href="javascript:cmd('hiunn','琰')">琰</a>第五十<small>(忝儼同用)</small></td><td><a href="javascript:cmd('hiunn','豔')">豔</a>第五十五<small>(㮇釅同用)</small></td><td><a href="javascript:cmd('hiunn','葉')">葉</a>第二十九<small>(怗同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','添')">添</a>第二十五</td><td><a href="javascript:cmd('hiunn','忝')">忝</a>第五十一</td><td><a href="javascript:cmd('hiunn','㮇')">㮇</a>第五十六</td><td><a href="javascript:cmd('hiunn','怗')">怗</a>第三十</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','咸')">咸</a>第二十六<small>(銜同用)</small></td><td><a href="javascript:cmd('hiunn','豏')">豏</a>第五十三<small>(檻范同用)</small></td><td><a href="javascript:cmd('hiunn','陷')">陷</a>第五十八<small>(鑑梵同用)</small></td><td><a href="javascript:cmd('hiunn','洽')">洽</a>第三十一<small>(狎同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','銜')">銜</a>第二十七</td><td><a href="javascript:cmd('hiunn','檻')">檻</a>第五十四</td><td><a href="javascript:cmd('hiunn','鑑')">鑑</a>第五十九</td><td><a href="javascript:cmd('hiunn','狎')">狎</a>第三十二</td></tr>
+<tr><td><a href="javascript:cmd('hiunn','嚴')">嚴</a>第二十八<small>(凡同用)</small></td><td><a href="javascript:cmd('hiunn','儼')">儼</a>第五十二</td><td><a href="javascript:cmd('hiunn','釅')">釅</a>第五十七</td><td><a href="javascript:cmd('hiunn','業')">業</a>第三十三<small>(乏同用)</small></td></tr>
+<tr><td><a href="javascript:cmd('hiunn','凡')">凡</a>第二十九</td><td><a href="javascript:cmd('hiunn','范')">范</a>第五十五</td><td><a href="javascript:cmd('hiunn','梵')">梵</a>第六十</td><td><a href="javascript:cmd('hiunn','乏')">乏</a>第三十四</td></tr>
+</tbody>
+</table>
+
+	<div class='struct' id="tableview" style="display:none">
+	</div>
+</div>
+<br/>
+<br/>
+
+<div id="entryview" style="visibility:">
+</div>
+<br/>
+<a href="#">[top]</a>
+</body>
+</html>

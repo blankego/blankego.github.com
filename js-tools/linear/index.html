@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Linear System Solver</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta name="keywords" content="九章算術, 直除法, 方程">
+    <base href="http://cccount.bitbucket.org/linear/"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    
+    <script type="text/javascript" src="linear.js"></script>
+    
+</head>
+<body>
+    <h2>直除法解方程</h2>
+    <a id="egSwitch" href="javascript:void(0)">範例<span id="egToggle">+</span></a>
+    <div id="eg" style="display:none">
+        <p>今有上禾三秉，中禾二秉，下禾一秉，實三十九斗；上禾二秉，中禾三秉，下禾一秉，實三十四斗；上禾一秉，中禾二秉，下禾三秉，實二十六斗。問上、中、下禾實一秉各幾何？</p>
+        <p>（下列方程圖例皆採用橫列等式，與《九章》原文的對應關係為左右對上下，上下對右左)</p>
+<pre>
+上	中	下
+禾	禾	禾
+3	2	1    39
+2	3	1    34
+1	2	3    26
+</pre>
+<p>以右行上禾（系數3）遍乘中行而以直除（連減到零為止）。又乘其次，亦以直除。</p>
+<pre>
+3	2	1	39
+0	5	1	24
+0	4	8	39
+</pre>
+<p>然以中行中禾不盡者遍乘左行而以直除。</p>
+<pre>
+3	2	1	39
+0	5	1	24
+0	0	4	11
+</pre>
+<p>左方下禾不盡者，上為法(除數），下為實（被除數）。實即下禾之實。</p>
+<p>求中禾，以法乘中行下實，而除下禾之實。余如中禾秉數而一，即中禾之實。</p>
+<pre>
+12	8	0	145
+0	4	0	17
+0	0	4	11
+</pre>
+<p>求上禾亦以法乘右行下實，而除下禾、中禾之實。余如上禾秉數而一，即上禾之實。實皆如法，各得一斗。
+圖略。</p>
+<pre>
+4	0	0	37
+0	4	0	17
+0	0	4	11
+</pre>
+    </div>
+
+    <input id="submit" type="button" value="Solve!"/><br/>
+    <textarea id="input" cols="80" rows="10"></textarea>
+    
+    <div id="result">
+    </div>
+</body>
+
+</html>

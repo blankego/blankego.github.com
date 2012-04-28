@@ -42,6 +42,7 @@ h5,h6{
     padding: 3px 6px;
     margin: 6px 0 20px 6px;
     min-width: 100px;
+    clear: right;
     /*height: 95%;*/
 
 }
@@ -136,6 +137,7 @@ li.menu_item{
 .content{
     padding: 12px;
 
+
 }
 .container{
     background: #fefff3;
@@ -159,6 +161,7 @@ pre{
 pre.excerpt{
     border: 0;
     background: #fefff3;
+    margin-bottom: 80px;
 }
 
 pre>code{

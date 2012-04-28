@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="zh-TW">
+<head>
+    <title>Universal Numeral Notation Converter</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta name="keywords" content="roman numerals, chinese numerals, suzhou numerals, arabic numerals">
+    <script type="text/javascript" src="./numerals.js"></script>
+    <base href="http://cccount.bitbucket.org/numeral/"/>
+</head>
+<body onload="onPageload()">
+    <style>
+        body{
+            font:monospace;
+            padding:20px;
+        }
+        table {
+            padding :0px;
+            border-collapse: collapse;
+            empty-cells: hide;
+        }
+        th,td {
+            text-align:left;
+            border :1px solid gray;
+            padding: 8px;
+        }
+        
+    </style>
+    <input type="text" id="input" value="2011"/>
+    <input type="button" id="submit" value="convert"/>
+    <br/><br/>
+    <div id="type"></div>
+    <br/>
+    <table>
+        <tbody>
+            <tr><th>Hindu-Arabic numerals</th><td id="arabic"></td></tr>
+            <tr><th>Roman numerals</th><td id="roman"></td></tr> 
+            <tr><th>中文數碼小寫</th><td id="chinese"></td></tr>
+            <tr><th>中文數碼大寫</th><td id="chineseMaj"></td></tr>
+            <tr><th>蘇州碼子</th><td id="suzhou"></td></tr>
+            <tr><th>算籌計數</th><td id="rods"></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
