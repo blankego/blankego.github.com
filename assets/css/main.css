@@ -199,3 +199,23 @@ td,th{
     padding: 0;
     text-decoration: none;
 }
+.toc{
+    float: left;
+    background: silver;
+    border: 1px #ffc0cb;
+    border-radius: 0 10px 0 0;
+    padding: 6px;
+    font-size: x-small;
+    color: #a54f30;
+}
+.header-ref{
+    cursor: pointer;
+    text-decoration: none;
+}
+.hidden{
+    display: none;
+}
+.toc-caption{
+    cursor: pointer;
+    background: grey;
+}
