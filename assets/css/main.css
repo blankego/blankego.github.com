@@ -205,25 +205,25 @@ td,th{
     border: 1px #ffc0cb;
     border-radius: 0 0 10px 0;
     padding: 6px;
-    font-size: x-small;
+    font-size: smaller;
     color: #a54f30;
     margin-right: 8px;
     margin-bottom: 8px;
 }
 .H2{
-    margin-left: 5px;
+    margin-left: 8px;
 }
 .H3{
-    margin-left: 10px;
+    margin-left: 16px;
 }
 .H4{
-    margin-left: 15px;
+    margin-left: 24px;
 }
 .H5{
-    margin-left: 20px;
+    margin-left: 32px;
 }
 .H6{
-    margin-left: 25px;
+    margin-left: 40px;
 }
 .header-ref{
     cursor: pointer;
@@ -234,7 +234,28 @@ td,th{
 }
 .toc-caption{
     cursor: pointer;
-    font-style: bold;
+    font-weight: bold;
     padding: 3px;
     background: #c2e5e7;
+}
+.highlight pre{
+    background: #fbfbe7;
+    border-color: #2a5973;
+
+}
+.highlight pre{
+    padding: 0;
+    margin: 0;
+}
+.highlight pre>code{
+    display: block;
+    padding: 6px;
+}
+.highlight code{
+    color: black;
+}
+.highlight .irb, .highlight .pycon{
+    background: white;
+    color: #000000;
+
 }
