@@ -201,12 +201,29 @@ td,th{
 }
 .toc{
     float: left;
-    background: silver;
+    background: #f4f4f4;
     border: 1px #ffc0cb;
-    border-radius: 0 10px 0 0;
+    border-radius: 0 0 10px 0;
     padding: 6px;
     font-size: x-small;
     color: #a54f30;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+.H2{
+    margin-left: 5px;
+}
+.H3{
+    margin-left: 10px;
+}
+.H4{
+    margin-left: 15px;
+}
+.H5{
+    margin-left: 20px;
+}
+.H6{
+    margin-left: 25px;
 }
 .header-ref{
     cursor: pointer;
@@ -217,5 +234,7 @@ td,th{
 }
 .toc-caption{
     cursor: pointer;
-    background: grey;
+    font-style: bold;
+    padding: 3px;
+    background: #c2e5e7;
 }

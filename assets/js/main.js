@@ -23,14 +23,14 @@
         [].forEach.call(headers,function(h){
             list.appendChild(new HeaderRef(h).el);
         });
-        el.prependChild(toc);
+        el.insertBefore(toc,el.firstElementChild);
 
     }
     function HeaderRef(h)
     {
         var me = this;
         this.header = h;
-        var el = document.createElement('a');
+        var el = document.createElement('div');
         el.classList.add("header-ref");
         el.classList.add(h.tagName);
         el.innerText = h.innerText;
