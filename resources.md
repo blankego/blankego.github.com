@@ -1,6 +1,6 @@
 ---
 layout: main
-title Resources
+title: Resources
 ---
 You can find useful links here, If you and me have some intersection in interests.
 
