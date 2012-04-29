@@ -4,7 +4,7 @@
         if(!window.document.querySelector)return;
         el = el || document.querySelector(".content");
         var headers = el.querySelectorAll('h1,h2,h3,h4,h5,h6');
-        if(!headers.length)return;
+        if(headers.length<=1)return;
         var toc = document.createElement('div');
         toc.className = "toc";
         var cap = document.createElement('div');
