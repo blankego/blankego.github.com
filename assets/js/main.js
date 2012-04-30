@@ -1,4 +1,10 @@
 (function(){
+	function toggleVisibilty(el)
+	{
+		el.classList.contains('hidden')?
+			el.classList.remove('hidden'):
+			el.classList.add("hidden");
+	}
     function GenToc (el)
     {
         if(!window.document.querySelector)return;
@@ -14,11 +20,7 @@
         list.className = 'toc-list hidden';
         toc.appendChild(cap);
         toc.appendChild(list);
-        cap.onclick=function(){
-            list.classList.contains('hidden')?
-                list.classList.remove('hidden'):
-                list.classList.add('hidden');
-        };
+        cap.onclick=function(){toggleVisibilty(list); };
 
         [].forEach.call(headers,function(h){
             list.appendChild(new HeaderRef(h).el);
@@ -40,8 +42,17 @@
 
         this.el = el;
     }
+    function addPortalToggle()
+    {
+		if(!document.querySelector)return;
+		var toggles = document.querySelectorAll('.sidebar H4');
+		[].forEach.call(toggles,function(t){
+			t.onclick = function(){ toggleVisibilty(t.nextElementSibling);};
+		});
+	}
     document.addEventListener('DOMContentLoaded',function(){
         GenToc();
+        addPortalToggle();
     });
 })();
 

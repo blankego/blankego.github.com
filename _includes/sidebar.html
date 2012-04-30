@@ -35,11 +35,14 @@
 		<hr/>
 		<h4>Archive</h4>
 		<ul>
-			<li><a href="/archive.html#2012">2012</a></li>
-			<li><a href="/archive.html#2011">2011</a></li>
-			<li><a href="/archive.html#2010">2010</a></li>
-			<li><a href="/archive.html#2009">2009</a></li>
-
+{% if page.date %}{% capture pageYear %}{{page.date| date: "%Y"}}{% endcapture %}{% endif %}
+{% for y in site.years reversed %}
+	{% if y  == pageYear %}
+	<li><b><a href="/archive.html#{{y}}">{{y}}</a></b></li>
+	{% else %}
+	<li><a href="/archive.html#{{y}}">{{y}}</a></li>
+	{% endif %}
+{% endfor %}
 		</ul>
 	</div>
 </div>

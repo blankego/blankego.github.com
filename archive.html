@@ -3,10 +3,6 @@ layout: main
 title: Archive
 ---
 <div>
-	<h2>2012</h2>
-	<table class="sublist">
-		{% for p in site.posts %}
-		{% capture y %}{{p.date|date:"%Y"}}{% endcapture %}
-		{% endfor %}
-	</table>
+	{% assign posts_collate = site.posts %}
+	{% include posts_collate.html %}
 </div>

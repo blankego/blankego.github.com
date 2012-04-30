@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0px 10px 0px 10px;
+    line-height: 1.5em;
 }
 a {
     text-decoration: none;
@@ -43,12 +44,14 @@ h5,h6{
     margin: 6px 0 20px 6px;
     min-width: 100px;
     clear: right;
+    font-size: smaller;
+    line-height:1.2 em;
     /*height: 95%;*/
 
 }
 .sidebar a{
     display: table-cell;
-    padding-right: 10px;
+    padding: 3px 10px 3px 2px;
     text-decoration: none;
 }
 .sidebar sup{
@@ -57,6 +60,7 @@ h5,h6{
 
 }
 .sidebar li{
+	padding: 0;
     display: table-row;
     width: 100%;
     white-space: nowrap;
@@ -76,6 +80,12 @@ h5,h6{
     list-style: none;
     padding: 3px;
     margin: 0;
+}
+.sidebar ul.hidden{
+	display: none;
+}
+.sidebar h4{
+	cursor: pointer;
 }
 .footer{
     text-align: right;
@@ -156,6 +166,7 @@ pre{
     border: 1px solid #661e80;
     padding: 6px;
     margin: 6px;
+    width: auto;
     background: #edfff5;
 }
 pre.excerpt{

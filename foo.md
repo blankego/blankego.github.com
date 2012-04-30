@@ -6,10 +6,18 @@ x:
 - b
 ---
 foo
-{% for p in site.tags %}
-[{{p[0]}}]
-{% endfor %}
 
+
+{{pageYear}}
+<ul>
+{% for y in site.years reversed %}
+	{% if pageYear == y %}
+	<li><b><a href="/archive.html#{{y}}">{{y}}</a></b></li>
+	{% else %}
+	<li><a href="/archive.html#{{y}}">{{y}}</a></li>
+	{% endif %}
+{% endfor %}
+</ul>
 {% for m in site.main_menu %}
  {{m.label}} =
 {% endfor %}
