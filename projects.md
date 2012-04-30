@@ -1,6 +1,7 @@
 ---
 layout: main
 title: Projects
+showToc: true
 ---
 ## RhymeDictChrome
 + Site: <https://github.com/blankego/RhymeDictChrome>

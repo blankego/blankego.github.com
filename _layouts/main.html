@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/pygments.css"/>
 	<script type="text/javascript" src="/assets/js/main.js"></script>
 </head>
-<body>
+<body data-showToc="{% if page.showToc %}true{% else %}false{% endif %}">
     <div class="container">
 	    {% include header.html %}
 	    {% include sidebar.html %}

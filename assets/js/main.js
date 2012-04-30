@@ -17,7 +17,7 @@
         cap.className = 'toc-caption';
         cap.innerText = "toc";
         var list = document.createElement('div');
-        list.className = 'toc-list hidden';
+        list.className = document.body.getAttribute('data-showToc') == 'true'?'toc-list':'toc-list hidden';
         toc.appendChild(cap);
         toc.appendChild(list);
         cap.onclick=function(){toggleVisibilty(list); };
