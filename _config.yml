@@ -4,6 +4,15 @@ pygments: true
 #paginate: 10
 #markdown_ext: markdown,mkd,mkdn,md
 title: 述而
+years:
+- "2005"
+- "2006"
+- "2007"
+- "2008"
+- "2009"
+- "2010"
+- "2011"
+- "2012"
 main_menu:
 - label: Home
   url: /index.html
@@ -17,5 +26,5 @@ main_menu:
   url: /resources.html
 - label: JS Tools
   url: /js-tools.html
-years: ["2005","2006","2007","2008","2009","2010","2011","2012"]
+
 
