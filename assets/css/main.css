@@ -25,6 +25,21 @@ h5,h6{
     margin:6px;
     padding: 6px 6px 6px 10px;
 }
+h2{
+	padding-left: 12px;
+}
+h3{
+	padding-left:18px;	
+}
+h4{
+	padding-left:24px;
+}
+h5{
+	padding-left:30px;
+}
+h6{
+	padding-left:36px;
+}
 #siteName{
     color: #fafad2;
     font-weight: bold;
@@ -169,11 +184,25 @@ pre{
     margin: 6px;
     width: auto;
     background: #edfff5;
+    white-space: pre; /* CSS2 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap; /* HP printers */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+	overflow:auto;
 }
-pre.excerpt{
-    border: 0;
-    background: #fefff3;
-    margin-bottom: 80px;
+div.excerpt{
+    border: 1px dotted grey;
+    background: #F7FFF3;
+    margin:5px 15px 30px 15px;
+    padding: 10px 20px;
+    line-height: 1.3em;
+    color: #4D4D4D;
+    overflow: auto;
+    border-radius: 0 30px 0 30px;
 }
 
 pre>code{
@@ -221,6 +250,7 @@ td,th{
     color: #a54f30;
     margin-right: 8px;
     margin-bottom: 8px;
+    z-index: 250;
 }
 .H2{
     margin-left: 8px;

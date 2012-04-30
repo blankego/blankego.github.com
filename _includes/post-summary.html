@@ -1,0 +1,35 @@
+{% assign howMany = pagesToShow or 20 %}
+{% for post in site.posts limit:howMany %}
+<h3><a href="{{post.url}}">{{post.title}} - {{post.date|date: "%b %d,%Y"}}</a></h3>
+{% if post.categories[0] or post.tags[0] %}
+	<div class="tags">
+	{% if post.categories[0] %}
+		Categories: 
+		{% for c in post.categories %}
+		<a class="category" href="/categories.html#{{c}}">{{c}}</a>/
+		{% endfor %}
+	{% if post.tags[0] %} - {% endif %}
+	{% endif %}
+	{% if post.tags[0] %}
+		 Tags: 
+		{% for t in post.tags %}
+		<span class="tag"><a href="/tags.html#{{t}}">{{t}}</a></span>
+		{% endfor %}
+	{% endif %}
+	- <span><a href="{{post.url}}"> [ Read more ] </a></span>
+	</div>
+{% endif %}
+<div class="excerpt">
+{% if post.summary %}
+	{{ post.summary|newline_to_br }}
+{% else %}
+{% if post.language == 'en' %}
+{{post.content|strip_html|truncatewords:80|newline_to_br}}
+{% else %}
+{{post.content|strip_html|truncate: 200|newline_to_br}}
+{% endif %}
+{% endif %}
+</div>
+{% endfor %}
+{% assign pagesToShow = nil %}
+{% assign howMany = nil %}

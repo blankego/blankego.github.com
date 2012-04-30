@@ -29,4 +29,5 @@ X contains a
 ![img](/assets/image/ids_lib.png)
 
 - - -
+<ruby>要<rp>（</rp><rt>於霄</rt><rp>）</rp></ruby>
 {{site.url}}
