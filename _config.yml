@@ -1,7 +1,7 @@
 markdown: rdiscount
 auto: true
 pygments: true
-url: blankego.github.com
+url: http://blankego.github.com
 #paginate: 10
 #markdown_ext: markdown,mkd,mkdn,md
 title: 述而
