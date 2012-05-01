@@ -336,12 +336,12 @@ $(document).ready(function(){
 	//pretty crappy, still could'nt figure it out!! So
 	//I set different event for different browser
 	var hwinput=$("#hwinput");
-	if($.browser.mozilla|| $.browser.msie)
-		hwinput.keypress(inputKeyHandling);
+	//if($.browser.mozilla|| $.browser.msie)
+		//hwinput.keypress(inputKeyHandling);
 	//else if($.browser.safari)
-	//	hwinput.keyup(inputKeyHandling);
-
-
+		//hwinput.keyup(inputKeyHandling);
+	hwinput.keydown(inputKeyHandling);
+	hwinput.change(function(){search();});
 	$("#submit").click(function(){search();});	
 	$.historyInit(allCommands,'index.html');	
 	///for debug

@@ -1,0 +1,30 @@
+CACHE MANIFEST
+# 2012-04-30:v1.01
+
+# Explicitly cached entries
+css/jqueryslidemenu.css
+css/main.css
+http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js
+js/jquery.history.js
+data/sjeng.js
+data/hiunn.js
+data/hiunnmiuk.js
+data/dziohym.js
+data/kuankhiunn.js
+js/khdict.js
+js/khtable.js
+js/actions.js
+index.html
+js/jqueryslidemenu.js
+
+
+# offline.html will be displayed if the user is offline
+FALLBACK:
+
+
+# All other resources (e.g. sites) require the user to be online.
+NETWORK:
+*
+
+# Additional resources to cache
+CACHE:
