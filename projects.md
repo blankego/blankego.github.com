@@ -18,7 +18,7 @@ A chrome/chromium dictionary extension, which especially aims native Chinese spe
 <a id="cccount"/>
 ## CCCount
 + Site: <https://bitbucket.org/need4steed/cccount>
-+ Language: C++/Java/C#/python
++ Language: C++/Java/C#/python/ruby
 
 ## IDS
 

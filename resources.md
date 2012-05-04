@@ -12,6 +12,8 @@ You can find useful links here, If you and me have some intersection in interest
 
 You don't need to build the Babel to make your way to heaven  - <http://rosettacode.org/>
 
+Compare the syntax in a tabular style - <http://rigaux.org/language-study/syntax-across-languages/>
+
 Have questions? Ask an warm-hearted expert at [Stackoverflow](http://stackoverflow.com/)
 
 
@@ -21,7 +23,7 @@ Have questions? Ask an warm-hearted expert at [Stackoverflow](http://stackoverfl
 Javascript may be not a fancy language, but it's definitely a fun one. It's so dynamic that you can tweak it however you like to do all kinds of nasty tricks, as long as the brower says okay. Yeah, the browser's compatibilty is always the pain in the ass. I bet you've been haunted by it for a long time. Guess what, it won't quit, you will likely keep being bothered by it, for the foreseeable future. That's because the browser implementers they don't appreciate the virtue of collaboration - to make a better world? No way! They're doomed to fight each other to death. Although the fighting is bloody, the competition does have some benefits, it pushes the web to evolve. 
 
 #### Embrace HTML5 if you're optimistic
-+ <http://www.html5rocks.com> - audo/video, 3D, webStorage, workers,
++ <http://www.html5rocks.com> - audo/video, 3D, webStorage, workers, binary Arrays..., too much fun!
 	+ [ECMAScript 5 compatibilty table](http://kangax.github.com/es5-compat-table/)
 	+ [Can I Use?](http://http://caniuse.com/)
 	
@@ -33,8 +35,8 @@ Javascript may be not a fancy language, but it's definitely a fun one. It's so d
 
 #### Use deploy some lib to fight the cross-browser war
 
-+ [JQuery](http://jquery.com) It's not just about write less.
-+ [Underscore](http://documentcloud.github.com/underscore/) Bring the functional
++ [JQuery](http://jquery.com) - It's not just about write less.
++ [Underscore](http://documentcloud.github.com/underscore/)  - Bring the functional
   idioms to the js world! Why I love this slim humble symbol, because it doesn't hurt my eyes. 
 
 
@@ -49,7 +51,7 @@ It's essentially js in Sugarcoat.
 
 {% highlight coffeescript %}
 dress = (who, clothes = "coffee flavor sugarcoat") ->
-	"The #{clothes} does make #{who} look sweet!"
+    "The #{clothes} does make #{who} look sweet!"
 {% endhighlight %}
 
 There's one problem: bugs also love candy! How would you debug a program under camouflage?
@@ -66,15 +68,15 @@ Use [QUnit](https://github.com/jquery/qunit)
 
 -- The big snake is moaning!
 
-I started programming by learnging turbo BASIC and PASCAL and a little bit C, But my process slept for N years until I rediscovered the Wonderland of programming by meeting Python, It's truely a fun language but not a easy one. I love underscore promises she stays single! Mess with a couple(`__`) to have an affair is just not my thing ;) Why on earth are there so many `self`, `__`. And as a pure dynamic language it surprisingly lacks a decent closure, don't tell me it has a `lambda`,  for me it's more like a `lame-duh`. And here comes the really deal-breaker. They indeed compiled the damn runtime in different encodings for different platforms, [UCS-4](http://en.wikipeda.org/UCS-4) for linux and [UCS-2](http://en.wikipeda.org/UCS-2) for mswin32 respectively! When use the UCS2 version You cannot treat characters beyond [BMP](http://en.wikipedia.org/wiki/Plane_\(Unicode\)#Basic_Multilingual_Plane) the same way as the other characters, You have to manipulate surrogate-pairs by hand, `len()` `for c in s:` all crippled, in one word, the cross-platform blurb turned to bullcrap . As a Chinese speaker how can accept that?
+I started programming by learnging turbo BASIC and PASCAL and a little bit C, But my process slept for N years until I rediscovered the Wonderland of programming by meeting Python, It's truely a fun language but not a easy one. I love underscore promises she stays single! Mess with a couple(`__`) to have an affair is just not my thing ;) Why on earth are there so many `self`, `__`. And as a pure dynamic language it surprisingly lacks a decent closure, don't tell me it has a `lambda`,  for me it's more like a `lame-duh`. And here comes the really deal-breaker. They indeed compiled the damn runtime in different encodings for different platforms, [UCS-4](http://en.wikipeda.org/UCS-4) for linux and [UCS-2](http://en.wikipeda.org/UCS-2) for mswin32 respectively! When use the UCS2 version You cannot treat characters beyond [BMP](http://en.wikipedia.org/wiki/Plane_\(Unicode\)#Basic_Multilingual_Plane) the same way as the other characters, You have to manipulate surrogate-pairs by hand, `len()` , `for c in s:` all crippled, in one word, the cross-platform blurb turned to bullcrap . As a Chinese speaker how can accept that?
 
 + [PQR](http://rgruet.free.fr/PQR27/PQR2.7.html) - Python Quick Reference, the invaluable reference.
 
 ### Ruby
-Ruby is awesome, and very easy to learn. 
+Ruby is awesome and elegant, its syntax is basically impeccable, except the slightly fat runtime.  
 
 ### Functional
-I'm a big fan of functional programming, I like filter, fold, map, currying..., so many fun!
+I'm a big fan of functional programming, I like filter, fold, map, currying..., so much fun!
 
 - [Learn You a Haskell for Great Good](http://learnyouahaskell.com) - Monad, thunk, statelessness, lazyness, meet the beast. I appreciate the purity, but I'm too addictive to the stateful world, I doubt I can ever get used to solve realworld problems in such a linguistic puristic way.
 
@@ -94,7 +96,7 @@ you got a amazing new horizon!
 
 #### IDE
 
-The [QtCreator] rules! Get the 2.5 version, it chokes no more 0x lines! 
+The [QtCreator](http://qt-project.org/wiki/Qt_Creator_Releases) rules! Get the 2.5 version, it no more chokes on 0X lines! 
 
 ### Dependency hell
 
@@ -106,6 +108,7 @@ How about Lua? Lua's syntax is so verbose, so restrictive and so anti programmer
 ### PHP
 Php is easy. Because it's permeating the web, it's worth to learn, unless your company uses rails or django. The [Yii framework](www.yiiframework.com) is a decent one. If you want to get the gist of [MVC](en.wikipedia.org/wiki/Model–view–controller), all you need is to peruse Yii's [guide](http://www.yiiframework.com/doc/guide/) and work out some proj. 
 
+<http://phpsadness.com/>
 
 ### C# / JAVA
 .NET/Mono and JDK they're just fine. If your boss prefers either of them, how dare you argue with him. 
